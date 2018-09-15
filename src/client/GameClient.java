@@ -4,9 +4,10 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
 import client.gui.GUI;
+import netzklassen.Client;
 import protocol.PROTOCOL;
 
-public class GameClient extends client.netzklassen.Client {
+public class GameClient extends Client {
 	private GUI gui;
 	private String username;
 //	private ChatWindow chatWindow;

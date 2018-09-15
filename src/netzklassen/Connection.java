@@ -8,11 +8,11 @@ import java.io.*;
  * Abiturpruefungen im Fach Informatik ab 2012 in
  * Nordrhein-Westfalen.</p>
  * <p>Klasse Connection</p>
- * <p>Objekte der Klasse Connection ermöglichen eine Netzwerkverbindung mit
- * dem TCP/IP-Protokoll. Es können nach Verbindungsaufbau zu einem Server
+ * <p>Objekte der Klasse Connection ermï¿½glichen eine Netzwerkverbindung mit
+ * dem TCP/IP-Protokoll. Es kï¿½nnen nach Verbindungsaufbau zu einem Server
  * Zeichenketten (Strings) gesendet und empfangen werden. Zur Vereinfachung
   * geschieht dies zeilenweise, d. h., beim Senden einer Zeichenkette wird ein
-  * Zeilentrenner ergänzt und beim Empfangen wird er entfernt.</p>
+  * Zeilentrenner ergï¿½nzt und beim Empfangen wird er entfernt.</p>
  *
  * <p>NW-Arbeitsgruppe: Materialentwicklung zum Zentralabitur
  * im Fach Informatik</p>
@@ -28,12 +28,12 @@ public class Connection extends Thread {
 
     /** 
      * Es wird eine Verbindung zum durch IP-Adresse und Portnummer angegebenen
-     *  Server aufgebaut, so dass Daten gesendet und empfangen werden können.
+     *  Server aufgebaut, so dass Daten gesendet und empfangen werden kï¿½nnen.
      */
-    public Connection(String serverName, int port){
+    public Connection(String serverName, int port, int timeout) throws SocketTimeoutException {
         this.serverName = serverName;
         this.port = port;
-        connect();
+        connect(timeout);
     }
     
     public Connection(Socket socket) {
@@ -50,15 +50,19 @@ public class Connection extends Thread {
     }
         
     
-    private String connect() {
+    private String connect(int timeout) throws SocketTimeoutException {
         try {
-            s = new Socket(serverName,port);
+            s = new Socket();
+            s.connect(new InetSocketAddress(serverName,port), timeout);
             //Objekt zum Versenden von Nachrichten ueber den Socket erzeugen
             zumHost = new PrintWriter(s.getOutputStream(), true);
             //Objekt zum Empfangen von Nachrichten ueber das Socketobjekt erzeugen
             vomHost= new BufferedReader(new InputStreamReader(s.getInputStream()));
             return "Verbindung : " + s;
         } catch (Exception e) {
+        	if (e instanceof SocketTimeoutException) {
+        		throw (SocketTimeoutException) e;
+        	}
             e.printStackTrace();
             return e.getMessage();
         }
@@ -66,8 +70,8 @@ public class Connection extends Thread {
     
   /** 
    * Es wird auf eine eingehende Nachricht vom Server gewartet und diese
-   * Nachricht zurückgegeben, wobei der vom Server angehängte Zeilentrenner
-   * entfernt wird. Während des Wartens ist der ausführende Prozess blockiert.
+   * Nachricht zurï¿½ckgegeben, wobei der vom Server angehï¿½ngte Zeilentrenner
+   * entfernt wird. Wï¿½hrend des Wartens ist der ausfï¿½hrende Prozess blockiert.
    */
     public String receive() {
         try {

@@ -1,8 +1,9 @@
-package main;
+package server;
 
 import java.util.*;
-import console.ConsoleWindow;
+
 import netzklassen.Server;
+import server.console.ConsoleWindow;
 
 public class GameServer extends Server implements OnStatusChange {
 	private ArrayList<Player> playerList = new ArrayList();

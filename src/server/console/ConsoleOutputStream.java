@@ -1,4 +1,4 @@
-package console;
+package server.console;
 
 import java.io.IOException;
 import java.io.OutputStream;

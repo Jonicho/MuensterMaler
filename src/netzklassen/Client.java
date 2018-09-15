@@ -1,4 +1,7 @@
 package netzklassen;
+
+import java.net.SocketTimeoutException;
+
 /**
  * <p>Materialien zu den zentralen
  * Abiturpruefungen im Fach Informatik ab 2012 in
@@ -36,7 +39,7 @@ public abstract class Client
         /**
         Der ClientEmpfaenger hat den zugeh&ouml;rigen Client und die zugeh&ouml;rige Connection kennen gelernt.<br>
         @param pClient zugeh&ouml;riger Client, der die einkommenden Nachrichten bearbeitet
-        @param pConnection zugeh&ouml;rige Connection, die die einkommenden Nachrichten empfŠngt
+        @param pConnection zugeh&ouml;rige Connection, die die einkommenden Nachrichten empfï¿½ngt
         */
         public Clientempfaenger(Client pClient, Connection pConnection)
         {
@@ -79,9 +82,9 @@ public abstract class Client
     @param pIPAdresse IP-Adresse bzw. Domain des Servers
     @param pPortNr Portnummer des Sockets
     */
-    public Client(String pIPAdresse, int pPortNr)
+    public Client(String pIPAdresse, int pPortNr, int connectTimeout) throws SocketTimeoutException
     {
-        hatVerbindung = new Connection(pIPAdresse, pPortNr); 
+        hatVerbindung = new Connection(pIPAdresse, pPortNr, connectTimeout); 
         
         try
         {
