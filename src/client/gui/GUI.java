@@ -2,7 +2,6 @@ package client.gui;
 
 import java.awt.Dimension;
 
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -11,10 +10,6 @@ import client.Picture;
 import client.StringCallback;
 
 public class GUI extends JFrame {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	/*
 	 * Basic Panels

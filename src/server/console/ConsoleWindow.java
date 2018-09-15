@@ -3,9 +3,9 @@ package server.console;
 import java.io.PrintStream;
 
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 
 public class ConsoleWindow extends JPanel {
+	private static final long serialVersionUID = 1L;
 
 	public ConsoleWindow() {
 

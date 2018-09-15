@@ -8,10 +8,11 @@ import java.awt.Insets;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JButton;
 import java.awt.Font;
 
 public class WaitingScreen extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	public WaitingScreen(String username) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 30, 0, 0, 0 };

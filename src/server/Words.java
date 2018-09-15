@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Words {
 
-	private ArrayList<String[]> words = new ArrayList();
+	private ArrayList<String[]> words = new ArrayList<String[]>();
 	private BufferedReader br = null;
 
 	public Words() {
@@ -45,7 +45,7 @@ public class Words {
 
 	public ArrayList<String[]> getWords(int count) {
 
-		ArrayList<String[]> returnValue = new ArrayList();
+		ArrayList<String[]> returnValue = new ArrayList<String[]>();
 		int length = words.size();
 		Random rn = new Random();
 		int range = length - 0;

@@ -16,7 +16,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -26,6 +25,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class GuessScreen extends JPanel implements KeyListener {
+	private static final long serialVersionUID = 1L;
 	private JLabel feedbackLabel;
 	private JTextField guessTextField;
 	private StringCallback guessCallback;

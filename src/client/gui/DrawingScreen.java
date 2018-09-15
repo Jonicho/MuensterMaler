@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class DrawingScreen extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private PaintLabel drawLabel;
 	private JPanel drawPanel;
 

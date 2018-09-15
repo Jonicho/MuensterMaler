@@ -6,9 +6,9 @@ import netzklassen.Server;
 import server.console.ConsoleWindow;
 
 public class GameServer extends Server implements OnStatusChange {
-	private ArrayList<Player> playerList = new ArrayList();
-	private ArrayList<Player> readyClients = new ArrayList();
-	private ArrayList<Game> gameList = new ArrayList();
+	private ArrayList<Player> playerList = new ArrayList<Player>();
+	private ArrayList<Player> readyClients = new ArrayList<Player>();
+	private ArrayList<Game> gameList = new ArrayList<Game>();
 	private int PLAYER_COUNT = 3;
 
 	public static void main(String[] args) {

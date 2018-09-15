@@ -24,6 +24,7 @@ import java.net.SocketTimeoutException;
 import java.awt.event.ActionEvent;
 
 public class LoginScreen extends JPanel implements KeyListener {
+	private static final long serialVersionUID = 1L;
 	private JTextField ipTextField;
 	private JTextField postTextField;
 	private JTextField usernameTextField;

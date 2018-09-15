@@ -1,7 +1,6 @@
 package client.gui;
 
 import javax.swing.JPanel;
-import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.DefaultListModel;
@@ -18,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ScoreScreen extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	public ScoreScreen(ArrayList<String> playerList, ArrayList<String> scoreList, GUI gui) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0 };

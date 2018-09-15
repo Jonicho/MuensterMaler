@@ -26,7 +26,7 @@ public class Drawing {
 
 	// Returns ArrayList of Players which guessed the correct words.
 	public ArrayList<Player> getQualityGuesses(int quality) {
-		ArrayList<Player> res = new ArrayList();
+		ArrayList<Player> res = new ArrayList<Player>();
 		for (int i = 0; i < guesses.length; i++) {
 			if (guesses[i].getQuality() == quality) {
 				res.add(guesses[i].getPlayer());
