@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import client.Picture;
 import client.Picture.Line;
 
-public class PaintLabel extends JLabel implements MouseMotionListener,MouseListener {
-	
+public class PaintLabel extends JLabel implements MouseMotionListener, MouseListener {
+
 	public static final int CODE_WHITE = 0;
 	public static final int CODE_BLACK = 1;
 	public static final int CODE_BLUE = 2;
@@ -75,87 +75,87 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 	}
 
 	public void addPoint(int x, int y) {
-		if(paintingAllowed) {
+		if (paintingAllowed) {
 			if (lastX == -1 && lastY == -1) {
 				lastX = (float) x / getWidth();
 				lastY = (float) y / getHeight();
 				lastLines.add(lastLines.size(), 0);
 			} else {
-	
+
 				float floatX = (float) x / getWidth();
 				float floatY = (float) y / getHeight();
 				if (Math.sqrt(Math.pow(floatX - lastX, 2) + Math.pow(floatY - lastY, 2)) > minDistance) {
 					picture.addLine(new Line(floatX, floatY, this.lastX, this.lastY, color, size));
 					lastX = floatX;
 					lastY = floatY;
-					int i = lastLines.get(lastLines.size()-1);
-					lastLines.set(lastLines.size()-1, i++);
+					int i = lastLines.get(lastLines.size() - 1);
+					lastLines.set(lastLines.size() - 1, i++);
 					repaint();
 				}
 			}
 		}
 	}
-	public void addStaticPoint(int x,int y) {
-		if(paintingAllowed) {
+
+	public void addStaticPoint(int x, int y) {
+		if (paintingAllowed) {
 			if (lastX == -1 && lastY == -1) {
 				lastX = (float) x / getWidth();
 				lastY = (float) y / getHeight();
 				lastLines.add(lastLines.size(), 0);
 			} else {
-	
+
 				float floatX = (float) x / getWidth();
 				float floatY = (float) y / getHeight();
-				
-					picture.addLine(new Line(floatX, floatY, this.lastX, this.lastY, color, size));
-					lastX = floatX;
-					lastY = floatY;
-					int i = lastLines.get(lastLines.size()-1);
-					lastLines.set(lastLines.size()-1, i++);
-					repaint();
-				
+
+				picture.addLine(new Line(floatX, floatY, this.lastX, this.lastY, color, size));
+				lastX = floatX;
+				lastY = floatY;
+				int i = lastLines.get(lastLines.size() - 1);
+				lastLines.set(lastLines.size() - 1, i++);
+				repaint();
+
 			}
 		}
 	}
-	public void addRelativePoint(float x,float y) {
-		if(paintingAllowed) {
+
+	public void addRelativePoint(float x, float y) {
+		if (paintingAllowed) {
 			if (lastX == -1 && lastY == -1) {
 				lastX = x;
 				lastY = y;
 				lastLines.add(lastLines.size(), 0);
 			} else {
-	
+
 				picture.addLine(new Line(x, y, this.lastX, this.lastY, color, size));
 				lastX = x;
 				lastY = y;
-				int i = lastLines.get(lastLines.size()-1);
-				lastLines.set(lastLines.size()-1, i++);
+				int i = lastLines.get(lastLines.size() - 1);
+				lastLines.set(lastLines.size() - 1, i++);
 				System.out.println(lastLines.get(lastLines.size()));
 				repaint();
 			}
 		}
 	}
-	
+
 	public void resetLastLines() {
-		if(lastLines.size() == 0) {
-			picture.removeLastLines(lastLines.get(lastLines.size()-1));
-			lastLines.remove(lastLines.size()-1);
+		if (lastLines.size() == 0) {
+			picture.removeLastLines(lastLines.get(lastLines.size() - 1));
+			lastLines.remove(lastLines.size() - 1);
 		}
 		repaint();
 	}
-	
+
 	public void resetAllLines() {
 		picture.removeAllLines();
 		repaint();
 	}
 
-
 	public void setBackground() {
-		if(paintingAllowed) {
+		if (paintingAllowed) {
 			picture.setBackgroundColor(color);
 			repaint();
 		}
 	}
-	
 
 	public void setColor(int colorCode) {
 		this.color = colorCode;
@@ -169,8 +169,10 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 	public int getColor() {
 		return color;
 	}
+
 	/**
 	 * Returns the current picture
+	 * 
 	 * @return the picture
 	 */
 	public Picture getPicture() {
@@ -182,7 +184,6 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 		repaint();
 	}
 
-
 	public float minThickness() {
 		return 1 / getHeight();
 	}
@@ -190,28 +191,32 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 	public float maxThickness() {
 		return this.getHeight();
 	}
-	
+
 	public float defaultThickness() {
 		return minThickness();
 	}
+
 	/**
 	 * Sets the size of the lines, that will be drawed from now
-	 * @param size the relative size
+	 * 
+	 * @param size
+	 *                 the relative size
 	 */
 	public void setSize(float size) {
 		if (size > 0 && size < 1) {
 			this.size = size;
 		}
 	}
+
 	/**
 	 * Returns the picture as a string
+	 * 
 	 * @return the picture converted into a string with toString() in Picture
 	 * @see Picture
 	 */
 	public String toString() {
 		return picture.toString();
 	}
-
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -221,7 +226,7 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		//nothing here
+		// nothing here
 
 	}
 
@@ -233,16 +238,14 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 			setBackground();
 		else if (paintMode == PaintLabel.MODE_DRAW) {
 			resetLast();
-			addStaticPoint(arg0.getX(),arg0.getY());
-			addStaticPoint(arg0.getX()+5,arg0.getY()+5);
+			addStaticPoint(arg0.getX(), arg0.getY());
+			addStaticPoint(arg0.getX() + 5, arg0.getY() + 5);
 		}
 	}
-	
-
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		//nothing here
+		// nothing here
 	}
 
 	@Override
@@ -252,7 +255,7 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		//nothing here
+		// nothing here
 
 	}
 
@@ -262,8 +265,11 @@ public class PaintLabel extends JLabel implements MouseMotionListener,MouseListe
 			resetLast();
 
 	}
+
 	/**
-	 * this methode changes the mode, this label is drawing. Your can choose between the mode
+	 * this methode changes the mode, this label is drawing. Your can choose between
+	 * the mode
+	 * 
 	 * @param mode_code
 	 */
 	public void changeMode(int mode_code) {

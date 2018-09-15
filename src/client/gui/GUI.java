@@ -19,7 +19,7 @@ public class GUI extends JFrame {
 	/*
 	 * Basic Panels
 	 */
-	
+
 	private LoginScreen loginScreen;
 	private WaitingScreen waitingScreen;
 	private DrawingScreen drawingScreen;
@@ -40,14 +40,14 @@ public class GUI extends JFrame {
 		pack();
 		setVisible(true);
 	}
-	
+
 	public void openLoginScreen() {
 		loginScreen = new LoginScreen(this);
 		getContentPane().add(loginScreen);
 		validate();
 		System.out.println("[GUI] Open login screen");
 	}
-	
+
 	public void closeLoginScreen() {
 		getContentPane().removeAll();
 		System.out.println("[GUI] Close login screen");
@@ -57,8 +57,10 @@ public class GUI extends JFrame {
 	 * This method opens the Painter. It will be finished and closed by
 	 * closePaintWindow()
 	 *
-	 * @param pictureTitle the title of the painting to be drawn.
-	 * @param timeToPaint  the period of time the user can draw
+	 * @param pictureTitle
+	 *                         the title of the painting to be drawn.
+	 * @param timeToPaint
+	 *                         the period of time the user can draw
 	 * @return nothing
 	 */
 	public void openDrawingScreen(String pictureTitle, int timeToDraw) {
@@ -70,8 +72,7 @@ public class GUI extends JFrame {
 			System.out.println("[GUI] Open draw screen");
 		}
 	}
-	
-	
+
 	/**
 	 * This method close the painter window and returns the picture as a Picture.
 	 *
@@ -80,7 +81,7 @@ public class GUI extends JFrame {
 	 */
 	public Picture closeDrawingScreen() {
 		if (drawingScreen != null) {
-			//TODO add endSession into new JPanel
+			// TODO add endSession into new JPanel
 			Picture result = drawingScreen.getPicture();
 			drawingScreen.setVisible(false);
 			getContentPane().removeAll();
@@ -95,10 +96,12 @@ public class GUI extends JFrame {
 	 * This method sets the players taking place and their score, if available. This
 	 * image is the image, which content the player will guess.
 	 *
-	 * @param playerList the player list.If the value equals null, nothing will be
-	 *                   done.
-	 * @param scoreList  the score list. The score of player at position i is the
-	 *                   object in the scorelist at this position
+	 * @param playerList
+	 *                       the player list.If the value equals null, nothing will
+	 *                       be done.
+	 * @param scoreList
+	 *                       the score list. The score of player at position i is
+	 *                       the object in the scorelist at this position
 	 */
 	public void openScoreScreen(ArrayList<String> playerList, ArrayList<String> scoreList) {
 		if (!active) {
@@ -141,27 +144,30 @@ public class GUI extends JFrame {
 	 * This method opens the menu to a new Guess. This image is the image, which
 	 * content the player will guess.
 	 *
-	 * @param picture the picture to be shown
-	 * @param time    the period of time the player has to draw his image
+	 * @param picture
+	 *                    the picture to be shown
+	 * @param time
+	 *                    the period of time the player has to draw his image
 	 * @see Picture
 	 */
 	public void openGuessingScreen(Picture picture, int time) {
 		if (!active) {
 			active = true;
-			guessScreen = new GuessScreen(picture,time,guessCallback);
+			guessScreen = new GuessScreen(picture, time, guessCallback);
 			getContentPane().add(guessScreen);
 			validate();
 			active = true;
 			System.out.println("[GUI] Open guess window");
 		}
 	}
-	
 
 	/**
 	 * this method gives feedback to given guesses
 	 * 
-	 * @param status   true if the answer is correct false if it is wrong
-	 * @param feedback a hint if their is something
+	 * @param status
+	 *                     true if the answer is correct false if it is wrong
+	 * @param feedback
+	 *                     a hint if their is something
 	 */
 	public void setGuessFeedback(boolean status, String feedback) {
 		if (active && guessScreen != null) {
@@ -190,13 +196,13 @@ public class GUI extends JFrame {
 	public void setCallback(StringCallback callback) {
 		this.guessCallback = callback;
 	}
-	
-	public void setCorrectOnGuess(String drawer,String correctTitle) {
-		if(guessScreen != null) {
+
+	public void setCorrectOnGuess(String drawer, String correctTitle) {
+		if (guessScreen != null) {
 			guessScreen.setCorrect(drawer, correctTitle);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		new GUI();
 	}

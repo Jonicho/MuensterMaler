@@ -20,12 +20,12 @@ import java.awt.event.ActionEvent;
 public class ScoreScreen extends JPanel {
 	public ScoreScreen(ArrayList<String> playerList, ArrayList<String> scoreList, GUI gui) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{15, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 15, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		JLabel userLabel = new JLabel("Users");
 		userLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
 		GridBagConstraints gbc_userLabel = new GridBagConstraints();
@@ -33,7 +33,7 @@ public class ScoreScreen extends JPanel {
 		gbc_userLabel.gridx = 0;
 		gbc_userLabel.gridy = 0;
 		add(userLabel, gbc_userLabel);
-		
+
 		JLabel pointsLabel = new JLabel("Points");
 		pointsLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
 		GridBagConstraints gbc_pointsLabel = new GridBagConstraints();
@@ -41,7 +41,7 @@ public class ScoreScreen extends JPanel {
 		gbc_pointsLabel.gridx = 1;
 		gbc_pointsLabel.gridy = 0;
 		add(pointsLabel, gbc_pointsLabel);
-		
+
 		JList<String> usersList = new JList<String>();
 		usersList.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_usersList = new GridBagConstraints();
@@ -50,7 +50,7 @@ public class ScoreScreen extends JPanel {
 		gbc_usersList.gridx = 0;
 		gbc_usersList.gridy = 1;
 		add(usersList, gbc_usersList);
-		
+
 		JList<String> pointsList = new JList<String>();
 		pointsList.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_pointsList = new GridBagConstraints();
@@ -59,35 +59,34 @@ public class ScoreScreen extends JPanel {
 		gbc_pointsList.gridx = 1;
 		gbc_pointsList.gridy = 1;
 		add(pointsList, gbc_pointsList);
-		
+
 		DefaultListModel<String> userslm = new DefaultListModel<String>();
 		for (int i = 0; i < playerList.size(); i++) {
 			userslm.addElement(playerList.get(i));
 		}
 		usersList.setModel(userslm);
-		
-		//action Listeners
+
+		// action Listeners
 		usersList.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				pointsList.setSelectedIndex(usersList.getSelectedIndex());
 			}
 		});
-		
+
 		pointsList.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				usersList.setSelectedIndex(pointsList.getSelectedIndex());
 			}
 		});
-		
-		
+
 		DefaultListModel<String> pointslm = new DefaultListModel<String>();
 		for (int i = 0; i < scoreList.size(); i++) {
 			pointslm.addElement(scoreList.get(i));
 		}
 		pointsList.setModel(pointslm);
-		
+
 		JButton btnNewButton = new JButton("NEW GAME");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

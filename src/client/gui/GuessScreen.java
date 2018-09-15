@@ -29,14 +29,15 @@ public class GuessScreen extends JPanel implements KeyListener {
 	private JLabel feedbackLabel;
 	private JTextField guessTextField;
 	private StringCallback guessCallback;
+
 	public GuessScreen(Picture picture, int timeToGuess, StringCallback guessCallback) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {225, 0};
-		gridBagLayout.rowHeights = new int[] {100, 0, 0, 0, 10};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 225, 0 };
+		gridBagLayout.rowHeights = new int[] { 100, 0, 0, 0, 10 };
+		gridBagLayout.columnWeights = new double[] { 1.0, 0.0 };
+		gridBagLayout.rowWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setLayout(null);
@@ -47,14 +48,14 @@ public class GuessScreen extends JPanel implements KeyListener {
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 0;
 		add(panel, gbc_panel);
-		
+
 		PaintLabel paintLabel = new PaintLabel();
 		paintLabel.setBounds(0, 0, 450, 184);
 		paintLabel.setPicture(picture);
 		paintLabel.setPaintingAllowed(false);
 		panel.add(paintLabel);
 		paintLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		JButton guessButton = new JButton("Guess");
 		guessButton.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		guessButton.addActionListener(new ActionListener() {
@@ -68,7 +69,7 @@ public class GuessScreen extends JPanel implements KeyListener {
 		gbc_guessButton.gridx = 1;
 		gbc_guessButton.gridy = 1;
 		add(guessButton, gbc_guessButton);
-		
+
 		guessTextField = new JTextField();
 		guessTextField.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
@@ -78,7 +79,7 @@ public class GuessScreen extends JPanel implements KeyListener {
 		gbc_textField.gridy = 1;
 		add(guessTextField, gbc_textField);
 		guessTextField.setColumns(10);
-		
+
 		feedbackLabel = new JLabel("Feedback");
 		feedbackLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		GridBagConstraints gbc_feedbackLabel = new GridBagConstraints();
@@ -86,18 +87,19 @@ public class GuessScreen extends JPanel implements KeyListener {
 		gbc_feedbackLabel.gridx = 0;
 		gbc_feedbackLabel.gridy = 2;
 		add(feedbackLabel, gbc_feedbackLabel);
-		
+
 		JLabel timerLabel = new JLabel("99");
 
 		Timer t = new Timer();
 		t.scheduleAtFixedRate(new TimerTask() {
 			private int time = timeToGuess / 1000;
+
 			@Override
 			public void run() {
 				timerLabel.setText(--time + "");
 			}
 		}, 1000, 1000);
-		
+
 		timerLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		GridBagConstraints gbc_timerLabel = new GridBagConstraints();
 		gbc_timerLabel.insets = new Insets(0, 0, 5, 0);
@@ -114,24 +116,24 @@ public class GuessScreen extends JPanel implements KeyListener {
 				paintLabel.setBounds(0, 0, size, size);
 			}
 		});
-		
+
 		this.addKeyListener(this);
 		guessTextField.addKeyListener(this);
 	}
-	
+
 	public void setGuessFeedback(boolean status, String feedback) {
 		if (status) {
 			feedbackLabel.setText("Correct");
 		} else {
-			feedbackLabel.setText(feedback == null ? "Wrong answer": feedback);
-			if(feedback==null) {
+			feedbackLabel.setText(feedback == null ? "Wrong answer" : feedback);
+			if (feedback == null) {
 				guessTextField.setText("");
 			}
-			}
+		}
 	}
-	
+
 	public void setCorrect(String drawer, String correctTitle) {
-		System.out.println(drawer+";"+correctTitle+"@ GuessScreen");
+		System.out.println(drawer + ";" + correctTitle + "@ GuessScreen");
 		feedbackLabel.setText("Drawn by " + drawer + ". Correct word: " + correctTitle);
 	}
 
@@ -141,22 +143,22 @@ public class GuessScreen extends JPanel implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		if(arg0.getKeyCode()==KeyEvent.VK_ENTER) {
+		if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 			guessCallback.fire(guessTextField.getText());
 		}
-		
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

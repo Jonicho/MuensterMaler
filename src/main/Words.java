@@ -19,18 +19,18 @@ public class Words {
 
 			// variable s as buffer
 			String s;
-			
+
 			// reading every line and adding it to the list
 			while ((s = br.readLine()) != null) {
-				
+
 				String[] similarWords = s.split(",");
-				
-				for(int i = 0; i < similarWords.length; i++) {
+
+				for (int i = 0; i < similarWords.length; i++) {
 					similarWords[i] = similarWords[i].toLowerCase();
 				}
-								
+
 				words.add(similarWords);
-				
+
 			}
 
 			// Catching Exceptions
@@ -60,7 +60,7 @@ public class Words {
 			}
 
 		}
-		
+
 		return returnValue;
 	}
 }

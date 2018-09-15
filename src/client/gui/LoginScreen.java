@@ -28,7 +28,7 @@ public class LoginScreen extends JPanel implements KeyListener {
 	private JTextField postTextField;
 	private JTextField usernameTextField;
 	private GUI gui;
-	private String lastNameEntry,lastIpEntry,lastPortEntry;
+	private String lastNameEntry, lastIpEntry, lastPortEntry;
 	private BufferedReader reader;
 	private BufferedWriter writer;
 	private FileWriter fw;
@@ -107,24 +107,22 @@ public class LoginScreen extends JPanel implements KeyListener {
 		gbc_usernameTextField.gridy = 3;
 		add(usernameTextField, gbc_usernameTextField);
 		usernameTextField.setColumns(10);
-		
-		//keyListener
+
+		// keyListener
 		this.addKeyListener(this);
 		usernameTextField.addKeyListener(this);
 		postTextField.addKeyListener(this);
 		ipTextField.addKeyListener(this);
-		
-		//textFiles
+
+		// textFiles
 		try {
-		InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream ("lastLogin.txt"));
-		reader = new BufferedReader (inputStreamReader);
-		ipTextField.setText(reader.readLine());
-		postTextField.setText(reader.readLine());
-		usernameTextField.setText(reader.readLine());
-		}
-		catch(Exception e)
-		{
-			System.out.println("konnte Datei last login nicht öffnen");
+			InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream("lastLogin.txt"));
+			reader = new BufferedReader(inputStreamReader);
+			ipTextField.setText(reader.readLine());
+			postTextField.setText(reader.readLine());
+			usernameTextField.setText(reader.readLine());
+		} catch (Exception e) {
+			System.out.println("konnte Datei last login nicht ï¿½ffnen");
 		}
 
 		JButton connectButton = new JButton("Connect");
@@ -141,8 +139,8 @@ public class LoginScreen extends JPanel implements KeyListener {
 		gbc_connectButton.gridy = 4;
 		add(connectButton, gbc_connectButton);
 	}
-	public void connect()
-	{
+
+	public void connect() {
 		int port;
 		try {
 			port = Integer.parseInt(postTextField.getText());
@@ -157,40 +155,41 @@ public class LoginScreen extends JPanel implements KeyListener {
 				e1.printStackTrace();
 			}
 		}).start();
-		
-	lastIpEntry=ipTextField.getText();
-	lastPortEntry=postTextField.getText();
-	lastNameEntry=usernameTextField.getText();
-	try {
-	fw = new FileWriter("lastLogin.txt");
-	writer = new BufferedWriter(fw);
-	writer.write(lastIpEntry);
-	writer.newLine();
-	writer.write(lastPortEntry);
-	writer.newLine();
-	writer.write(lastNameEntry);
-	writer.close();
-}
-catch(IOException e) {
-	System.out.println("konnte Datei zum beschreiben nicht öffnen");
-}
+
+		lastIpEntry = ipTextField.getText();
+		lastPortEntry = postTextField.getText();
+		lastNameEntry = usernameTextField.getText();
+		try {
+			fw = new FileWriter("lastLogin.txt");
+			writer = new BufferedWriter(fw);
+			writer.write(lastIpEntry);
+			writer.newLine();
+			writer.write(lastPortEntry);
+			writer.newLine();
+			writer.write(lastNameEntry);
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("konnte Datei zum beschreiben nicht ï¿½ffnen");
+		}
 	}
+
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		if(arg0.getKeyCode()==KeyEvent.VK_ENTER)
-		{
+		if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 			connect();
 		}
-		
+
 	}
+
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

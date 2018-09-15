@@ -83,9 +83,9 @@ public class GameServer extends Server implements OnStatusChange {
 				}
 			}
 			break;
-			
+
 		case protocol.PROTOCOL.CS_CHAT:
-			
+
 			for (int i = 0; i < gameList.size(); i++) {
 				Game current = gameList.get(i);
 				// adding chat message to the game if player is in the game
@@ -93,7 +93,7 @@ public class GameServer extends Server implements OnStatusChange {
 					current.receiveChatMessage(pClientIP, pClientPort, message);
 				}
 			}
-			
+
 			break;
 
 		// Default error message
@@ -101,7 +101,6 @@ public class GameServer extends Server implements OnStatusChange {
 			send(pClientIP, pClientPort, "message arrived. Was not defined in protocol");
 		}
 	}
-
 
 	public void startNewGame(ArrayList<Player> participants) {
 		// Starting new game

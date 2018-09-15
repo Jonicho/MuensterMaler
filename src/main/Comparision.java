@@ -9,8 +9,9 @@ public class Comparision {
 	public String isSynonym(String words[], String guess) {
 		for (String word : words) {
 			if (word.equals(guess)) {
-				//System.out.println("Guess \'" + guess + "\' is synonym to \'" + words[0] + "\'");
-				return "false:Falsches Wort, ähnliche Bedeutung!";
+				// System.out.println("Guess \'" + guess + "\' is synonym to \'" + words[0] +
+				// "\'");
+				return "false:Falsches Wort, ï¿½hnliche Bedeutung!";
 			}
 		}
 		return "false";
@@ -28,11 +29,12 @@ public class Comparision {
 					guessSub2 = guess.substring(i, guess.length());
 					wordSub1 = word.substring(0, i);
 					wordSub2 = word.substring(i + 1, word.length());
-					////System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
+					//// System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
 					// wordSub2);
 					if (guessSub1.equals(wordSub1) && guessSub2.equals(wordSub2)) {
-						//System.out.println("Guess \'" + guess + "\' lacks the letter \'" + word.charAt(i)
-						//		+ "\' to be the word \'" + word + "\'");
+						// System.out.println("Guess \'" + guess + "\' lacks the letter \'" +
+						// word.charAt(i)
+						// + "\' to be the word \'" + word + "\'");
 						return "false:Knapp dran! Ein Buchstabe fehlt!";
 					}
 				}
@@ -52,14 +54,15 @@ public class Comparision {
 					String guessSub1, guessSub2, wordSub1, wordSub2;
 					guessSub1 = guess.substring(0, i);
 					guessSub2 = guess.substring(i + 1, guess.length());
-					////System.out.println(guessSub1 + "+" + guessSub2);
+					//// System.out.println(guessSub1 + "+" + guessSub2);
 					wordSub1 = word.substring(0, i);
 					wordSub2 = word.substring(i, word.length());
-					////System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
+					//// System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
 					// wordSub2);
 					if (guessSub1.equals(wordSub1) && guessSub2.equals(wordSub2)) {
-						//System.out.println("Guess \'" + guess + "' has to lose the letter \'" + guess.charAt(i)
-						//		+ "\' to be the word \'" + word + "\'");
+						// System.out.println("Guess \'" + guess + "' has to lose the letter \'" +
+						// guess.charAt(i)
+						// + "\' to be the word \'" + word + "\'");
 						return "false:Knapp dran! Ein Buchstabe zu viel!";
 					}
 				}
@@ -76,31 +79,35 @@ public class Comparision {
 			String res = guess.substring(0, i) + guess.charAt(i + 1) + guess.charAt(i)
 					+ guess.substring(i + 2, guess.length());
 			if (res.equals(words[0])) {
-				//System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to \'" + words[0] + "\'");
+				// System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to
+				// \'" + words[0] + "\'");
 				return "false:Buchstaben vertauscht!";
 			}
 
-			////System.out.println("no just swap");
+			//// System.out.println("no just swap");
 
 			if (!additionalLetter(words, res).equals("false")) {
-				//System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to \'" + words[0] + "\'");
+				// System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to
+				// \'" + words[0] + "\'");
 				return additionalLetter(words, res);
 			}
 
-			////System.out.println("no additional");
+			//// System.out.println("no additional");
 
 			if (!missingLetter(words, res).equals("false")) {
-				//System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to \'" + words[0] + "\'");
+				// System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to
+				// \'" + words[0] + "\'");
 				return missingLetter(words, res);
 			}
 
-			////System.out.println("no missing");
+			//// System.out.println("no missing");
 
 			if (!isSynonym(words, res).equals("false")) {
-				//System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to \'" + words[0] + "\'");
+				// System.out.println("Guess \'" + guess + "\' has 2 letters swapped compared to
+				// \'" + words[0] + "\'");
 				return isSynonym(words, res);
 			}
-			////System.out.println("no synonym");
+			//// System.out.println("no synonym");
 		}
 		return "false";
 	}
@@ -112,22 +119,24 @@ public class Comparision {
 					String guessSub1, guessSub2, wordSub1, wordSub2;
 					guessSub1 = guess.substring(0, i);
 					guessSub2 = guess.substring(i + 1, guess.length());
-					////System.out.println(guessSub1 + "+" + guessSub2);
+					//// System.out.println(guessSub1 + "+" + guessSub2);
 					wordSub1 = word.substring(0, i);
 					wordSub2 = word.substring(i + 1, word.length());
-					////System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
+					//// System.out.println(guessSub1 + "+" + guessSub2 + "; " + wordSub1 + "+" +
 					// wordSub2);
 					if (guessSub1.equals(wordSub1) && guessSub2.equals(wordSub2)) {
-						//System.out.println("Guess \'" + guess + "' has to replace the letter \'" + guess.charAt(i)
-						//		+ "\' with the letter \'" + word.charAt(i) + "\' to be the word \'" + word + "\'");
+						// System.out.println("Guess \'" + guess + "' has to replace the letter \'" +
+						// guess.charAt(i)
+						// + "\' with the letter \'" + word.charAt(i) + "\' to be the word \'" + word +
+						// "\'");
 						return "false:Ein falscher Buchstabe!";
 					}
 				}
 			}
-			if(word.length() - guess.length() > 0) {
+			if (word.length() - guess.length() > 0) {
 				return missingLetter(words, guess);
 			}
-			if(word.length() - guess.length() < 0) {
+			if (word.length() - guess.length() < 0) {
 				return additionalLetter(words, guess);
 			}
 		}

@@ -191,8 +191,9 @@ public class Game implements Runnable {
 						System.out.println("Added " + Integer.toString(pointsForGuesser) + " to " + guesser.getName());
 					case 1:
 						guesser.addPoints(pointsForGuesser / 2);
-						//System.out.println(
-						//		"Added " + Integer.toString(pointsForGuesser / 2) + " to " + guesser.getName());
+						// System.out.println(
+						// "Added " + Integer.toString(pointsForGuesser / 2) + " to " +
+						// guesser.getName());
 					}
 					drawing.appendGuess(newGuess);
 				}
@@ -313,11 +314,11 @@ public class Game implements Runnable {
 		for (int j = 0; j < currentGuessDrawing.getQualityGuesses(2).size(); j++) {
 			if (!currentGuessDrawing.getQualityGuesses(2).get(j).equals(currentGuessDrawing.getDrawer())) {
 				currentGuessDrawing.getQualityGuesses(2).get(j).addPoints(pointsForGuesser);
-				//System.out.println("Added " + Integer.toString(pointsForGuesser) + " to "
-				//		+ currentGuessDrawing.getQualityGuesses(2).get(j).getName());
+				// System.out.println("Added " + Integer.toString(pointsForGuesser) + " to "
+				// + currentGuessDrawing.getQualityGuesses(2).get(j).getName());
 				currentGuessDrawing.getDrawer().addPoints(pointsForDrawer);
-				//System.out.println("Added " + Integer.toString(pointsForDrawer) + " to "
-				//		+ currentGuessDrawing.getDrawer().getName());
+				// System.out.println("Added " + Integer.toString(pointsForDrawer) + " to "
+				// + currentGuessDrawing.getDrawer().getName());
 				// System.out.println(currentGuessDrawing.getQualityGuesses(2).get(j).getName());
 			}
 
@@ -326,8 +327,9 @@ public class Game implements Runnable {
 		for (int j = 0; j < currentGuessDrawing.getQualityGuesses(1).size(); j++) {
 			if (!currentGuessDrawing.getQualityGuesses(1).get(j).equals(currentGuessDrawing.getDrawer())) {
 				currentGuessDrawing.getQualityGuesses(1).get(j).addPoints(pointsForGuesser - pointsForDrawer / 2);
-				//System.out.println("Added " + Integer.toString(pointsForGuesser-pointsForDrawer / 2) + " to "
-				//		+ currentGuessDrawing.getQualityGuesses(1).get(j).getName());
+				// System.out.println("Added " +
+				// Integer.toString(pointsForGuesser-pointsForDrawer / 2) + " to "
+				// + currentGuessDrawing.getQualityGuesses(1).get(j).getName());
 				// System.out.println(currentGuessDrawing.getQualityGuesses(1).get(j).getName());
 			}
 

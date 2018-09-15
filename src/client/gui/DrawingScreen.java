@@ -26,15 +26,16 @@ import java.awt.Font;
 public class DrawingScreen extends JPanel {
 	private PaintLabel drawLabel;
 	private JPanel drawPanel;
+
 	public DrawingScreen(String toDraw, int timeToDraw) {
 		setBackground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {80, 80, 80, 80, 300};
-		gridBagLayout.rowHeights = new int[] {50, 50, 50, 50, 50, 50, 50, 50, 50};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.columnWidths = new int[] { 80, 80, 80, 80, 300 };
+		gridBagLayout.rowHeights = new int[] { 50, 50, 50, 50, 50, 50, 50, 50, 50 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0 };
+		gridBagLayout.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		setLayout(gridBagLayout);
-		
+
 		JLabel guessingWordLabel = new JLabel(toDraw);
 		guessingWordLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 		GridBagConstraints gbc_guessingWordLabel = new GridBagConstraints();
@@ -43,7 +44,7 @@ public class DrawingScreen extends JPanel {
 		gbc_guessingWordLabel.gridx = 0;
 		gbc_guessingWordLabel.gridy = 0;
 		add(guessingWordLabel, gbc_guessingWordLabel);
-		
+
 		JLabel timerLabel = new JLabel();
 		timerLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 		GridBagConstraints gbc_timerLabel = new GridBagConstraints();
@@ -52,29 +53,29 @@ public class DrawingScreen extends JPanel {
 		gbc_timerLabel.gridx = 2;
 		gbc_timerLabel.gridy = 0;
 		add(timerLabel, gbc_timerLabel);
-		
+
 		Timer t = new Timer();
 		t.scheduleAtFixedRate(new TimerTask() {
 			private int time = timeToDraw / 1000;
+
 			@Override
 			public void run() {
 				timerLabel.setText(--time + "");
 			}
 		}, 1000, 1000);
-		
+
 		drawPanel = new JPanel();
 		drawPanel.setBackground(Color.LIGHT_GRAY);
 		drawPanel.setLayout(null);
 		int newValue = 10;
 
-		
 		GridBagConstraints gbc_drawPanel = new GridBagConstraints();
 		gbc_drawPanel.gridheight = 9;
 		gbc_drawPanel.fill = GridBagConstraints.BOTH;
 		gbc_drawPanel.gridx = 4;
 		gbc_drawPanel.gridy = 0;
 		add(drawPanel, gbc_drawPanel);
-		
+
 		drawLabel = new PaintLabel();
 		drawLabel.setBounds(95, 5, 0, 0);
 		drawPanel.add(drawLabel);
@@ -96,7 +97,7 @@ public class DrawingScreen extends JPanel {
 		gbc_greenColorButton.gridx = 0;
 		gbc_greenColorButton.gridy = 1;
 		add(greenColorButton, gbc_greenColorButton);
-		
+
 		JButton redColorButton = new JButton("Red");
 		redColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		redColorButton.addActionListener(new ActionListener() {
@@ -112,7 +113,7 @@ public class DrawingScreen extends JPanel {
 		gbc_redColorButton.gridx = 2;
 		gbc_redColorButton.gridy = 1;
 		add(redColorButton, gbc_redColorButton);
-		
+
 		JButton yellowColorButton = new JButton("Yellow");
 		yellowColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		yellowColorButton.addActionListener(new ActionListener() {
@@ -128,7 +129,7 @@ public class DrawingScreen extends JPanel {
 		gbc_yellowColorButton.gridx = 0;
 		gbc_yellowColorButton.gridy = 2;
 		add(yellowColorButton, gbc_yellowColorButton);
-		
+
 		JButton blueColorButton = new JButton("Blue");
 		blueColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		blueColorButton.addActionListener(new ActionListener() {
@@ -144,7 +145,7 @@ public class DrawingScreen extends JPanel {
 		gbc_blueColorButton.gridx = 2;
 		gbc_blueColorButton.gridy = 2;
 		add(blueColorButton, gbc_blueColorButton);
-		
+
 		JButton brownColorButton = new JButton("Brown");
 		brownColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		brownColorButton.addActionListener(new ActionListener() {
@@ -160,7 +161,7 @@ public class DrawingScreen extends JPanel {
 		gbc_brownColorButton.gridx = 0;
 		gbc_brownColorButton.gridy = 3;
 		add(brownColorButton, gbc_brownColorButton);
-		
+
 		JButton purpleColorButton = new JButton("Purple");
 		purpleColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		purpleColorButton.addActionListener(new ActionListener() {
@@ -176,7 +177,7 @@ public class DrawingScreen extends JPanel {
 		gbc_purpleColorButton.gridx = 2;
 		gbc_purpleColorButton.gridy = 3;
 		add(purpleColorButton, gbc_purpleColorButton);
-		
+
 		JButton blackColorButton = new JButton("Black");
 		blackColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		blackColorButton.addActionListener(new ActionListener() {
@@ -193,7 +194,7 @@ public class DrawingScreen extends JPanel {
 		gbc_blackColorButton.gridx = 0;
 		gbc_blackColorButton.gridy = 4;
 		add(blackColorButton, gbc_blackColorButton);
-		
+
 		JButton whiteColorButton = new JButton("White");
 		whiteColorButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		whiteColorButton.addActionListener(new ActionListener() {
@@ -209,7 +210,7 @@ public class DrawingScreen extends JPanel {
 		gbc_whiteColorButton.gridx = 2;
 		gbc_whiteColorButton.gridy = 4;
 		add(whiteColorButton, gbc_whiteColorButton);
-		
+
 		JRadioButton drawRadioButton = new JRadioButton("draw Mode");
 		drawRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_drawRadioButton = new GridBagConstraints();
@@ -219,7 +220,7 @@ public class DrawingScreen extends JPanel {
 		gbc_drawRadioButton.gridx = 0;
 		gbc_drawRadioButton.gridy = 5;
 		add(drawRadioButton, gbc_drawRadioButton);
-		
+
 		JLabel thicknessLabel = new JLabel("Thickness:");
 		thicknessLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_thicknessLabel = new GridBagConstraints();
@@ -228,7 +229,7 @@ public class DrawingScreen extends JPanel {
 		gbc_thicknessLabel.gridx = 2;
 		gbc_thicknessLabel.gridy = 5;
 		add(thicknessLabel, gbc_thicknessLabel);
-		
+
 		JSlider drawSizeSlider = new JSlider();
 		drawSizeSlider.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		drawSizeSlider.addChangeListener(new ChangeListener() {
@@ -254,7 +255,7 @@ public class DrawingScreen extends JPanel {
 		gbc_drawSizeSlider.gridx = 2;
 		gbc_drawSizeSlider.gridy = 6;
 		add(drawSizeSlider, gbc_drawSizeSlider);
-		
+
 		JButton backButton = new JButton("back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		backButton.addActionListener(new ActionListener() {
@@ -269,7 +270,7 @@ public class DrawingScreen extends JPanel {
 		gbc_backButton.gridx = 2;
 		gbc_backButton.gridy = 8;
 		add(backButton, gbc_backButton);
-		
+
 		JButton clearAllButton = new JButton("clear All");
 		clearAllButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		clearAllButton.addActionListener(new ActionListener() {
@@ -284,7 +285,7 @@ public class DrawingScreen extends JPanel {
 		gbc_clearAllButton.gridx = 0;
 		gbc_clearAllButton.gridy = 8;
 		add(clearAllButton, gbc_clearAllButton);
-		
+
 		JRadioButton fillRadioButton = new JRadioButton("fill Mode");
 		fillRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_fillRadioButton = new GridBagConstraints();
@@ -295,7 +296,7 @@ public class DrawingScreen extends JPanel {
 		gbc_fillRadioButton.gridx = 0;
 		gbc_fillRadioButton.gridy = 7;
 		add(fillRadioButton, gbc_fillRadioButton);
-		
+
 		JRadioButton lineRadioButton = new JRadioButton("line Mode");
 		lineRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		GridBagConstraints gbc_lineRadioButton = new GridBagConstraints();
@@ -305,7 +306,6 @@ public class DrawingScreen extends JPanel {
 		gbc_lineRadioButton.gridx = 0;
 		gbc_lineRadioButton.gridy = 6;
 		add(lineRadioButton, gbc_lineRadioButton);
-		
 
 		drawPanel.addComponentListener(new ComponentAdapter() {
 			@Override
@@ -317,7 +317,7 @@ public class DrawingScreen extends JPanel {
 				drawLabel.setBounds(0, 0, size, size);
 			}
 		});
-		
+
 		drawRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawRadioButton.setSelected(true);

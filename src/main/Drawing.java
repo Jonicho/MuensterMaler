@@ -18,7 +18,7 @@ public class Drawing {
 		players = pPlayers;
 		guesses = new Guess[players.size()];
 		Player nub = new Player("NONE", Integer.MAX_VALUE);
-		for(int i = 0; i < guesses.length; i++) {
+		for (int i = 0; i < guesses.length; i++) {
 			guesses[i] = new Guess(nub, "");
 			guesses[i].setQuality(0);
 		}
@@ -56,23 +56,23 @@ public class Drawing {
 	}
 
 	public int getIndexOf(Guess pGuess) {
-		for(int i = 0; i < guesses.length; i++) {
-			if(guesses[i].equals(pGuess)) {
+		for (int i = 0; i < guesses.length; i++) {
+			if (guesses[i].equals(pGuess)) {
 				return i;
 			}
 		}
 		return 0;
 	}
-	
+
 	public void appendGuess(Guess pGuess) {
 		Player player = pGuess.getPlayer();
 		guesses[players.indexOf(player)] = pGuess;
 	}
-	
+
 	public int getValidGuesses() {
 		int n = 0;
-		for(Guess guess:guesses) {
-			if(!guess.getPlayer().getIp().equals("NONE") && guess.getPlayer().getPort() != Integer.MAX_VALUE) {
+		for (Guess guess : guesses) {
+			if (!guess.getPlayer().getIp().equals("NONE") && guess.getPlayer().getPort() != Integer.MAX_VALUE) {
 				n++;
 			}
 		}

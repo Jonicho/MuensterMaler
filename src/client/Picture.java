@@ -28,14 +28,15 @@ public class Picture {
 	}
 
 	public void removeLastLines(int value) {
-		for(int i = 0;i < value;i++) {
-			lines.remove(lines.size()-1);
+		for (int i = 0; i < value; i++) {
+			lines.remove(lines.size() - 1);
 		}
 	}
-	
+
 	public void removeAllLines() {
 		lines = new ArrayList<Line>();
 	}
+
 	/**
 	 * Returns the background color as a color code
 	 * 
@@ -57,7 +58,8 @@ public class Picture {
 	/**
 	 * Creates a vector graphic from a string
 	 * 
-	 * @param s the string
+	 * @param s
+	 *              the string
 	 * @return the vector graphic represented by the string
 	 */
 	public static Picture fromString(String s) {
@@ -107,13 +109,14 @@ public class Picture {
 		 * @param x2
 		 * @param y2
 		 * 
-		 * @throws IllegalArgumentException if the coordinates are not between 0 and 1
+		 * @throws IllegalArgumentException
+		 *                                      if the coordinates are not between 0 and
+		 *                                      1
 		 */
 		public Line(float x1, float y1, float x2, float y2, int color, float thickness) {
 			if (x1 < 0 || x1 > 1 || y1 < 0 || y1 > 1 || x2 < 0 || x2 > 1 || y2 < 0 || y2 > 1) {
-				
-			}
-			else {
+
+			} else {
 				this.x1 = x1;
 				this.y1 = y1;
 				this.x2 = x2;
@@ -163,9 +166,10 @@ public class Picture {
 			return new Line(x1, y1, x2, y2, color, thickness);
 
 		}
+
 		@Override
 		public String toString() {
-			return x1 + ";" + y1 + ";" + x2 + ";" +  y2 + ";" + color + ";" + thickness;
+			return x1 + ";" + y1 + ";" + x2 + ";" + y2 + ";" + color + ";" + thickness;
 		}
 	}
 

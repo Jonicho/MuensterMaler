@@ -13,7 +13,7 @@ public class ComparisionTest {
 		words[1] = "semmel";
 		String guess = "semmel";
 		Comparision compare = new Comparision();
-		assertEquals("false:Falsches Wort, ähnliche Bedeutung!", compare.isSynonym(words, guess));
+		assertEquals("false:Falsches Wort, ï¿½hnliche Bedeutung!", compare.isSynonym(words, guess));
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false", compare.missingLetter(words, guess));
 	}
-	
+
 	@Test
 	public void testMissingLetterSynonym() {
 		String[] words = new String[2];
@@ -97,7 +97,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false", compare.additionalLetter(words, guess));
 	}
-	
+
 	@Test
 	public void testAdditionalLetterSynonym() {
 		String[] words = new String[2];
@@ -151,9 +151,9 @@ public class ComparisionTest {
 		words[1] = "crap";
 		String guess = "rcap";
 		Comparision compare = new Comparision();
-		assertEquals("false:Falsches Wort, ähnliche Bedeutung!", compare.swappedLetters(words, guess));
+		assertEquals("false:Falsches Wort, ï¿½hnliche Bedeutung!", compare.swappedLetters(words, guess));
 	}
-	
+
 	@Test
 	public void testSwappedLettersMissing() {
 		String[] words = new String[1];
@@ -162,7 +162,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false:Knapp dran! Ein Buchstabe fehlt!", compare.swappedLetters(words, guess));
 	}
-	
+
 	@Test
 	public void testSwappedLettersAdditional() {
 		String[] words = new String[1];
@@ -171,7 +171,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false:Knapp dran! Ein Buchstabe zu viel!", compare.swappedLetters(words, guess));
 	}
-	
+
 	@Test
 	public void testWrongLetter1() {
 		String[] words = new String[1];
@@ -180,7 +180,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false:Ein falscher Buchstabe!", compare.wrongLetter(words, guess));
 	}
-	
+
 	@Test
 	public void testWrongLetter2() {
 		String[] words = new String[1];
@@ -189,7 +189,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false:Ein falscher Buchstabe!", compare.wrongLetter(words, guess));
 	}
-	
+
 	@Test
 	public void testWrongLetter3() {
 		String[] words = new String[1];
@@ -198,7 +198,7 @@ public class ComparisionTest {
 		Comparision compare = new Comparision();
 		assertEquals("false:Ein falscher Buchstabe!", compare.wrongLetter(words, guess));
 	}
-	
+
 	@Test
 	public void testWrongLetterSynonym() {
 		String[] words = new String[2];

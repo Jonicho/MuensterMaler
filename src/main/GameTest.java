@@ -28,37 +28,37 @@ public class GameTest {
 
 	@Test
 	public void test1() {
-		String guess = "hülle";
+		String guess = "hï¿½lle";
 		assertEquals("huelle", game.changeChars(guess));
 	}
-	
+
 	@Test
 	public void test2() {
-		String guess = "hölle";
+		String guess = "hï¿½lle";
 		assertEquals("hoelle", game.changeChars(guess));
 	}
-	
+
 	@Test
 	public void test3() {
-		String guess = "häh";
+		String guess = "hï¿½h";
 		assertEquals("haeh", game.changeChars(guess));
 	}
-	
+
 	@Test
 	public void test4() {
-		String guess = "haß";
+		String guess = "haï¿½";
 		assertEquals("hass", game.changeChars(guess));
 	}
-	
+
 	@Test
 	public void test5() {
-		String guess = "ümmm";
+		String guess = "ï¿½mmm";
 		assertEquals("uemmm", game.changeChars(guess));
 	}
-	
+
 	@Test
 	public void test6() {
-		String guess = "mü";
+		String guess = "mï¿½";
 		assertEquals("mue", game.changeChars(guess));
 	}
 }
