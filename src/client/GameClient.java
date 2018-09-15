@@ -10,19 +10,20 @@ import protocol.PROTOCOL;
 public class GameClient extends Client {
 	private GUI gui;
 	private String username;
-//	private ChatWindow chatWindow;
+	// private ChatWindow chatWindow;
 
-	public GameClient(String ServerIP, int port, String username, int connectTimeout, GUI gui) throws SocketTimeoutException {
+	public GameClient(String ServerIP, int port, String username, int connectTimeout, GUI gui)
+			throws SocketTimeoutException {
 		super(ServerIP, port, connectTimeout);
 		gui.setCallback((String guess) -> {
 			send(PROTOCOL.CS_SEND_GUESS + PROTOCOL.TRENNER + guess);
 			System.out.println("Sent guess with callback: " + guess);
 		});
 		this.gui = gui;
-//		chatWindow = new ChatWindow((String s) -> {
-//			send(PROTOCOL.CS_CHAT + PROTOCOL.TRENNER + s);
-//			System.out.println("Chat message sent: " + s);
-//		});
+		// chatWindow = new ChatWindow((String s) -> {
+		// send(PROTOCOL.CS_CHAT + PROTOCOL.TRENNER + s);
+		// System.out.println("Chat message sent: " + s);
+		// });
 		if (username.contains(PROTOCOL.TRENNER)) {
 			throw new IllegalArgumentException("username must not contain \"" + PROTOCOL.TRENNER + "\"");
 		}
@@ -72,14 +73,14 @@ public class GameClient extends Client {
 			break;
 		}
 	}
-	
+
 	private void handleRightGuess(String[] msgParts) {
 		try {
 			String drawer = msgParts[1];
 			String correctAnswer = msgParts[2];
-			System.out.println(drawer+";"+correctAnswer+"@ GameClient");
+			System.out.println(drawer + ";" + correctAnswer + "@ GameClient");
 			gui.setCorrectOnGuess(drawer, correctAnswer);
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Failed to recive correct answer");
 		}
 	}
@@ -137,7 +138,7 @@ public class GameClient extends Client {
 		for (int i = 3; i < msgParts.length; i++) {
 			message += ":" + msgParts[i];
 		}
-//		chatWindow.addChatMessage(message, sender);
+		// chatWindow.addChatMessage(message, sender);
 	}
 
 	public void endSession() {
