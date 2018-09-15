@@ -380,12 +380,4 @@ public class Game implements Runnable {
 		return players;
 	}
 
-	public void receiveChatMessage(String ip, int port, String message) {
-		for (Player player : players) {
-			if (player.getIp().equals(ip) && player.getPort() == port) {
-				gameServer.sendMessage("C1:" + player.getName() + ":" + message, players);
-			}
-		}
-	}
-
 }

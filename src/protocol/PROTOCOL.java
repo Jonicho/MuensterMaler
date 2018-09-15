@@ -30,9 +30,6 @@ public class PROTOCOL {
 	// honoring of the winners; including score data and player names
 	public static final String SC_SEND_WINNERS = "S5";
 
-	// Chat message to the clients
-	public static final String SC_CHAT = "C1";
-
 	// CLIENT - SERVER PROTOCOL
 
 	// client requests allowness to send username
@@ -46,9 +43,6 @@ public class PROTOCOL {
 
 	// Client sends guess to server
 	public static final String CS_SEND_GUESS = "G1A";
-
-	// Chat message from the client
-	public static final String CS_CHAT = "C1A";
 
 	// TRENNER
 	public static final String TRENNER = ":";

@@ -10,7 +10,6 @@ import protocol.PROTOCOL;
 public class GameClient extends Client {
 	private GUI gui;
 	private String username;
-	// private ChatWindow chatWindow;
 
 	public GameClient(String ServerIP, int port, String username, int connectTimeout, GUI gui)
 			throws SocketTimeoutException {
@@ -20,10 +19,6 @@ public class GameClient extends Client {
 			System.out.println("Sent guess with callback: " + guess);
 		});
 		this.gui = gui;
-		// chatWindow = new ChatWindow((String s) -> {
-		// send(PROTOCOL.CS_CHAT + PROTOCOL.TRENNER + s);
-		// System.out.println("Chat message sent: " + s);
-		// });
 		if (username.contains(PROTOCOL.TRENNER)) {
 			throw new IllegalArgumentException("username must not contain \"" + PROTOCOL.TRENNER + "\"");
 		}
@@ -64,9 +59,6 @@ public class GameClient extends Client {
 			break;
 		case PROTOCOL.SC_GUESS_FEEDBACK:
 			handleGuessFeedback(msgParts);
-			break;
-		case PROTOCOL.SC_CHAT:
-			handleChatMessage(msgParts);
 			break;
 		case PROTOCOL.SC_RIGHT_GUESS:
 			handleRightGuess(msgParts);
@@ -130,15 +122,6 @@ public class GameClient extends Client {
 		boolean correct = Boolean.parseBoolean(msgParts[1]);
 		String hint = msgParts.length > 2 ? msgParts[2] : null;
 		gui.setGuessFeedback(correct, hint);
-	}
-
-	private void handleChatMessage(String[] msgParts) {
-		String sender = msgParts[1];
-		String message = msgParts[2];
-		for (int i = 3; i < msgParts.length; i++) {
-			message += ":" + msgParts[i];
-		}
-		// chatWindow.addChatMessage(message, sender);
 	}
 
 	public void endSession() {
